@@ -1,0 +1,122 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+
+    list-style: none;
+    text-decoration: none;
+}
+header{
+    position: fixed;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: coneter;
+    justify-content: space-between;
+    padding: 20px 10px;
+}
+.logo img{
+    max-width: 100px;
+    height: auto;
+}
+.navmenu{
+    display: flex;
+}
+.navmenu a{
+    color: #2c2c2c;
+    font-size: 16px;
+    text-transform: capitalize;
+    padding: 10px 20px;
+    font-weight: 400;
+    transition: all .42s ease;
+}
+.navmenu a:hover{
+    color: #e5595d;
+}
+.nav_icon{
+    display: flex;
+    align-items: center;
+}
+.nav_icon i{
+    margin-right: 20px;
+    color: #2c2c2c;
+    font-size: 25px;
+    font-weight: 400;
+    transition: all .42s ease;
+}
+.nav_icon i:hover{
+    transform: scale(1.1);
+    color: #e5595d;
+}
+#menu-icon{
+    font-size: 35px;
+    color: #2c2c2c;
+    z-index: 10001;
+    cursor: pointer;
+}
+section{
+    padding: 5% 10%;
+}
+.main-home{
+    width: 100%;
+    height: 100vh;
+    background-image: url(image/home.png);
+    background-position: center;
+    background-size: cover;
+    display: grid; 
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+}
+
+.main-home h1{
+    color: #2c2c2c;
+    font-size: 65px;
+    text-transform: capitalize;
+    line-height: 1.1;
+    font-weight: 600;
+    margin: 6px 0 0px;
+}
+.main-home p{
+    color: #333c56;
+    font-size: 20px;
+    font-style: jost;
+    margin-bottom: 20px;
+}
+.main-btn {
+    display: inline-block;
+    color: #111;
+    font-weight: 500;
+    font-size: 16px;
+    text-transform: capitalize;
+    border: 2px solid #111;
+    padding: 12px 25px;
+    transition: all .42s ease; 
+}
+.main-btn:hover{
+    background-color: #e5595d;
+    color: #fff;
+    border: none;
+}
+.main-btn i{
+    vertical-align: middle;
+}
+.down-arrow{
+    position: absolute;
+    top: 85%;
+    right: 11%;
+}
+.down i{
+    font-size: 30px;
+    color: #2c2c2c;
+    border: 2px solid #2c2c2c;
+    border-radius: 50px;
+    padding: 12px 12px;
+    transition: all .42s ease;
+}
+.down i:hover{
+    background-color: #000;
+    color: #fff;
+}
