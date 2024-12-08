@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <link rel="stylesheet" href="style/product_details.css">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+    <header>
+        <a href="#" class="logo"><img src="./image/Matra.png" alt=""></a>
+        <ul class="navmenu">
+            <li><a href="./index.php">home</a></li>
+            <li><a href="#">shop</a></li>
+            <li><a href="#">products</a></li>
+            <li><a href="#">page</a></li>
+            <li><a href="#">Docs</a></li>
+        </ul>
+        <div class="nav_icon">
+            <a href="./admin_d.php"><i class='bx bx-user'></i></a>
+            <a href="#"><i class='bx bx-cart'></i></a>
+        </div>
+    </header>
+
+    <section class="product-page">
+        <div class="product-image">
+            <div class="image-placeholder">
+                <img id="mainImage" src="image/Samsung 990 PRO 1TB.jpeg" alt="Product Image">
+            </div>
+            <div class="thumbnail-row">
+                <div class="thumbnail">
+                    <img src="image/Samsung 990 PRO 1TB.jpeg" alt="Thumbnail 1"
+                        onclick="changeImage('image/Samsung 990 PRO 1TB.jpeg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="image2.jpg" alt="Thumbnail 2" onclick="changeImage('image2.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="image3.jpg" alt="Thumbnail 3" onclick="changeImage('image3.jpg')">
+                </div>
+                <div class="thumbnail">
+                    <img src="image4.jpg" alt="Thumbnail 4" onclick="changeImage('image4.jpg')">
+                </div>
+            </div>
+        </div>
+        <div class="product-details">
+            <h1>Samsung 990 PRO</h1>
+            <p class="price">NPR 19,800</p>
+            <p class="description">
+                Elevate your storage experience with the cutting-edge Samsung 990 PRO SSD, combining blazing speeds
+                and energy efficiency for seamless gaming and professional performance.
+            </p>
+            <p><strong>Capacity:</strong> 1TB</p>
+            <div class="quantity-selector">
+                <button onclick="decreaseQuantity()">-</button>
+                <input type="text" id="quantity" value="1" readonly>
+                <button onclick="increaseQuantity()">+</button>
+            </div>
+            <div class="action-buttons">
+                <button class="add-to-cart">Add to Cart</button>
+                <button class="buy-now">Buy Now</button>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        function changeImage(src) {
+            document.getElementById('mainImage').src = src;
+        }
+
+        function increaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value, 10);
+            quantityInput.value = quantity + 1;
+        }
+
+        function decreaseQuantity() {
+            const quantityInput = document.getElementById('quantity');
+            let quantity = parseInt(quantityInput.value, 10);
+            if (quantity > 1) {
+                quantityInput.value = quantity - 1;
+            }
+        }
+    </script>
+</body>
+
+</html>

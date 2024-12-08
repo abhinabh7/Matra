@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shopping Cart</title>
+    <link rel="stylesheet" href="style/home.css">
+    <link href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <a href="home.html" class="logo"><img src="./image/Matra.png" alt=""></a>
+        <ul class="navmenu">
+            <li><a href="./home.html">home</a></li>
+            <li><a href="#">shop</a></li>
+            <li><a href="prodcut.html">products</a></li>
+            <li><a href="#">page</a></li>
+            <li><a href="#">Docs</a></li>
+        </ul>
+        <div class="nav_icon">
+            <a href="admin_dashboard.html"><i class='bx bx-user'></i></a>
+            <a href="#"><i class='bx bx-cart'></i></a>
+        </div>
+    </header>
+
+    <main class="cart-container">
+        <h1>Your Cart</h1>
+        <div class="cart">
+            <div class="cart-items">
+                <div class="item">
+                    <div class="item-image"></div>
+                    <div class="item-info">
+                        <h2>HDD</h2>
+                        <div class="quantity-selector">
+                            <button class="decrease">-</button>
+                            <input type="text" class="quantity" value="1" readonly>
+                            <button class="increase">+</button>
+                        </div>
+                        <p class="price" data-price="99">NRP 99</p>
+                        <a href="#" class="remove">Remove</a>
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="item-image"></div>
+                    <div class="item-info">
+                        <h2>SSD</h2>
+                        <div class="quantity-selector">
+                            <button class="decrease">-</button>
+                            <input type="text" class="quantity" value="1" readonly>
+                            <button class="increase">+</button>
+                        </div>
+                        <p class="price" data-price="99">NRP 99</p>
+                        <a href="#" class="remove">Remove</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="summary">
+                <table>
+                    <tr>
+                        <td>Subtotal</td>
+                        <td class="amount">NRP <span id="subtotal">198</span></td>
+                    </tr>
+                    <tr>
+                        <td>Shipping</td>
+                        <td class="amount">Calculated at the next step</td>
+                    </tr>
+                    <tr class="total-row">
+                        <td><strong>Total</strong></td>
+                        <td class="amount"><strong>NRP <span id="total">198</span></strong></td>
+                    </tr>
+                </table>
+                <button class="checkout">Continue to Checkout</button>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const items = document.querySelectorAll('.item');
+
+            items.forEach(item => {
+                const increaseBtn = item.querySelector('.increase');
+                const decreaseBtn = item.querySelector('.decrease');
+                const quantityEl = item.querySelector('.quantity');
+                const priceEl = item.querySelector('.price');
+                const unitPrice = parseInt(priceEl.getAttribute('data-price'));
+
+                increaseBtn.addEventListener('click', () => {
+                    let quantity = parseInt(quantityEl.value);
+                    quantity++;
+                    quantityEl.value = quantity;
+                    updatePrice(item, quantity, unitPrice);
+                });
+
+                decreaseBtn.addEventListener('click', () => {
+                    let quantity = parseInt(quantityEl.value);
+                    if (quantity > 1) {
+                        quantity--;
+                        quantityEl.value = quantity;
+                        updatePrice(item, quantity, unitPrice);
+                    }
+                });
+
+                const removeBtn = item.querySelector('.remove');
+                removeBtn.addEventListener('click', (event) => {
+                    event.preventDefault();
+                    if (confirm('Are you sure you want to remove this item?')) {
+                        item.remove();
+                        updateCart();
+                    }
+                });
+            });
+
+            function updatePrice(item, quantity, unitPrice) {
+                const priceEl = item.querySelector('.price');
+                const totalEl = document.getElementById('total');
+                const subtotalEl = document.getElementById('subtotal');
+
+                const newPrice = quantity * unitPrice;
+                priceEl.textContent = 'NRP ' + newPrice;
+
+                updateCart();
+            }
+
+            function updateCart() {
+                let total = 0;
+                const items = document.querySelectorAll('.item');
+                items.forEach(item => {
+                    const priceEl = item.querySelector('.price');
+                    const price = parseInt(priceEl.textContent.replace('NRP ', ''));
+                    total += price;
+                });
+
+                document.getElementById('total').textContent = total;
+                document.getElementById('subtotal').textContent = total;
+            }
+        });
+    </script>
+</body>
+
+</html>
